@@ -1,0 +1,3 @@
+spring:
+  banner:
+    location: classpath:/myBanner/banner.txt
