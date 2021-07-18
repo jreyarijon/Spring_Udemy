@@ -10,11 +10,11 @@ public class EjercicioErroresController {
 	
 	@GetMapping("/404error")
 	public String error404() {
-		return "404";
+		return "/error/404";
 	}
 	
 	@GetMapping("/500error")
 	public String error500() {
-		return "500";
+		return "/error/500";
 	}
 }
