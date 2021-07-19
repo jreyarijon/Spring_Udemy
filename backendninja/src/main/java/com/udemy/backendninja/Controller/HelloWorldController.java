@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.udemy.backendninja.Service.ExampleService;
 import com.udemy.backendninja.component.ExampleComponent;
 import com.udemy.backendninja.model.Person;
 
@@ -21,6 +22,10 @@ public class HelloWorldController {
 	public static final String HELLO_FILE = "helloworld";
 	
 	@Autowired
+	@Qualifier("ExampleService")
+	private ExampleService exampleService;
+	
+	@Autowired
 	@Qualifier("exampleComponent")
 	private ExampleComponent exampleComponent;
 	
@@ -28,7 +33,7 @@ public class HelloWorldController {
 	// 1 --> Nos ahorramos escribir todo el rato la variable method
 	@GetMapping("/helloWorld")
 	public String helloWorld(Model model) {
-		model.addAttribute("people", getPeople());
+		model.addAttribute("people", exampleService.getListPeople());
 		return HELLO_FILE;
 	}
 	
@@ -46,16 +51,6 @@ public class HelloWorldController {
 		mav.addObject("person", new Person("Mikel", 30));
 		
 		return mav;
-	}
-	
-	private List<Person> getPeople(){
-		List<Person> people = new ArrayList();
-		people.add(new Person("Jon", 23));
-		people.add(new Person("Mikel", 34));
-		people.add(new Person("Pablo", 25));
-		people.add(new Person("Paula", 62));
-		people.add(new Person("Ana", 12));
-		return people;
 	}
 	
 }
