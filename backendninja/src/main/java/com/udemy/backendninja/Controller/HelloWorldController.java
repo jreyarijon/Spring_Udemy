@@ -2,6 +2,8 @@ package com.udemy.backendninja.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.udemy.backendninja.component.ExampleComponent;
 import com.udemy.backendninja.model.Person;
 
 @Controller
@@ -16,6 +19,10 @@ import com.udemy.backendninja.model.Person;
 public class HelloWorldController {
 	
 	public static final String HELLO_FILE = "helloworld";
+	
+	@Autowired
+	@Qualifier("exampleComponent")
+	private ExampleComponent exampleComponent;
 	
 	//Formas de retornar una plantilla
 	// 1 --> Nos ahorramos escribir todo el rato la variable method
@@ -28,6 +35,7 @@ public class HelloWorldController {
 	// 2
 	@RequestMapping(value="/hello", method=RequestMethod.GET)
 	public String hello() {
+		exampleComponent.sayHello();
 		return HELLO_FILE;
 	}
 	
