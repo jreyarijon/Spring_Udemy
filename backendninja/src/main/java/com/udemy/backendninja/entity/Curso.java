@@ -75,4 +75,10 @@ public class Curso {
 		this.hours = hours;
 	}
 
+	@Override
+	public String toString() {
+		return "Curso [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", hours="
+				+ hours + "]";
+	}
+	
 }
