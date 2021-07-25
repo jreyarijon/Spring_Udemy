@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.udemy.backendninja.entity.Curso;
 
-@Repository("coursejparepository")
+@Repository("courseJpaRepository")
 public interface CursoJpaRepository extends JpaRepository<Curso, Serializable>{
 	
 	//Crea queries automaticamente
